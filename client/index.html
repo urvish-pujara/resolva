@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c2230'/%3E%3Cpath d='M9 22V10h8a4 4 0 0 1 1 7.9L21 22h-3l-2.5-4H12v4H9zm3-7h5a1.5 1.5 0 0 0 0-3h-5v3z' fill='%23fff'/%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resolvr</title>
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('resolvr.theme');
+          var theme = stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system';
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var resolved = theme === 'system' ? (prefersDark ? 'dark' : 'light') : theme;
+          if (resolved === 'dark') document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-app text-fg">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
